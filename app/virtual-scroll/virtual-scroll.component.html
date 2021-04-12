@@ -1,0 +1,35 @@
+<h3>Uniform size</h3>
+<cdk-virtual-scroll-viewport class="list-container list-group" autosize>
+	<div *cdkVirtualFor="let size of fixedSizeData; let i = index" class="list-group-item" [style.height.px]="size">
+		Item {{i}}
+	</div>
+</cdk-virtual-scroll-viewport>
+
+<hr>
+
+
+<ng-container *ngIf="states$ |async as allStates">
+<cdk-virtual-scroll-viewport class="list-container lg" [itemSize]="52.5" >
+  
+	<div *cdkVirtualFor="let state of allStates;" class="list-group-item">
+		<div class="state">{{state.name}}</div>
+		<div class="capital">{{state.capital}}</div>
+	</div>
+</cdk-virtual-scroll-viewport>
+
+<div style="padding-top:20px;"> 
+  <button (click)="sortBy('name')" class="btn btn-info">Sort by state name</button>
+  <button (click)="sortBy('capital')" class="btn btn-info">Sort by state capital</button>
+  Total Size: {{allStates.length}}
+</div>
+
+</ng-container>
+
+
+<div style="padding-top:40px;">
+  Article:  
+  <a href="https://netbasal.com/a-taste-of-angular-material-virtual-scroll-f173c5c70a1" target="_blank">
+    A Taste of Angular Material Virtual Scroll
+  </a>
+</div>
+
